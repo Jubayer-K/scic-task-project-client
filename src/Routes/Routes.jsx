@@ -4,6 +4,7 @@ import Root from "../layouts/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import AllProducts from "../Pages/AllProducts/AllProducts";
 
 const Routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const Routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/all-products",
+        element: <AllProducts></AllProducts>,
       },
     ],
   },

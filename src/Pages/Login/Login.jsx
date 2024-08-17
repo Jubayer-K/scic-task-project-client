@@ -114,19 +114,20 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="bg-gray-500 text-white btn w-full glass rounded-3xl hover:bg-gray-800"
+              className="bg-gray-500 text-white btn w-full rounded-3xl hover:bg-gray-800"
             >
               Log In
             </button>
           </form>
-
-          <button
-            onClick={handleGoogleSignIn}
-            type="button"
-            className=" btn text-red-800 text-xl py-2 px-4 rounded-md"
-          >
-            <FaGoogle></FaGoogle>
-          </button>
+          <div className="md:max-w-lg mx-auto">
+            <button
+              onClick={handleGoogleSignIn}
+              type="button"
+              className=" btn w-full rounded-3xl text-red-800 text-xl my-4 py-2 px-4"
+            >
+              <FaGoogle></FaGoogle>
+            </button>
+          </div>
 
           {registerError && (
             <p className="my-2 text-sm text-red-800">{registerError}</p>

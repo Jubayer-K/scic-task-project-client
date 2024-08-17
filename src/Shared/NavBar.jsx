@@ -21,7 +21,7 @@ const NavBar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li id="nav-link">
-        <NavLink to={"/listed"}>All Products</NavLink>
+        <NavLink to={"/all-products"}>All Products</NavLink>
       </li>
     </>
   );
@@ -91,7 +91,7 @@ const NavBar = () => {
         ) : (
           <Link
             to={"/register"}
-            className="md:btn sm:btn-sm md:glass hover:bg-gray-700 p-1 hover:text-white text-black md:rounded-3xl rounded-xl content-center"
+            className="md:btn hidden lg:block sm:btn-sm md:glass hover:bg-gray-700 p-1 hover:text-white text-black md:rounded-3xl rounded-xl content-center"
           >
             Register
           </Link>
