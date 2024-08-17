@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 const Card = ({ product }) => {
   const {
     Product_Name,
