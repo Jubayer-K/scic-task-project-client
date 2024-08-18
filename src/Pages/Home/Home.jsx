@@ -12,7 +12,7 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/products`
+          `${import.meta.env.VITE_API_URL}/all-products`
         );
         setProducts(response.data);
         // eslint-disable-next-line no-unused-vars
