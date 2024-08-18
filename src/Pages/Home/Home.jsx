@@ -32,6 +32,7 @@ const Home = () => {
   return (
     <>
       <h1 className="text-center md:text-3xl text-xl my-3">Start Shopping</h1>
+      <h2 className="my-4 text-center">Total Products: {products.length}</h2>
 
       <div className="grid lg:grid-cols-4 gap-5 md:grid-cols-3">
         {products.slice(0, 4).map((product) => (

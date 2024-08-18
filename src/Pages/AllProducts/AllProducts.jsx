@@ -153,7 +153,6 @@ const AllProducts = () => {
           <Card key={product.id} product={product} />
         ))}
       </div>
-      <h2 className="my-4 text-center">Total Products: {products.length}</h2>
       <div className="flex justify-center my-5 px-4">
         <div className="join">
           <button

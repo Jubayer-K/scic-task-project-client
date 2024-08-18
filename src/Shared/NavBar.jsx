@@ -53,7 +53,7 @@ const NavBar = () => {
         </div>
         <Link to={"/"}>
           <div className=" btn btn-ghost flex item-center" >
-            <img className="h-10" src="/favicon.png" alt="" />
+            <img className="md:h-10 hidden md:block" src="/favicon.png" alt="" />
             <button className="text-3xl font-bold text-nowrap">
               Khan <span className="text-gray-500">Shop</span>
             </button>

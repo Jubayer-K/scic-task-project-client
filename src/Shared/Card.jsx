@@ -8,6 +8,7 @@ const Card = ({ product }) => {
     Ratings,
     Description,
     Category,
+    Brand,
     date,
   } = product;
   return (
@@ -28,6 +29,7 @@ const Card = ({ product }) => {
               ${Price}
             </div>
             <div className="badge badge-outline">{Category}</div>
+            <div className="badge badge-ghost hover:badge-primary">{Brand}</div>
           </div>
           <div className="card-actions justify-end">
             <button className="btn btn-primary">Buy Now</button>
