@@ -47,12 +47,12 @@ Follow these steps to clone and set up the project locally:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/Jubayer-K/Khan-Blog-client.git
+   git clone https://github.com/Jubayer-K/scic-task-project-client.git
 
 
 2. **Navigate to the Project Directory:**
    ```bash
-   cd Khan-Blog-client
+   cd scic-task-project-client
 
 3. **Install Dependencies:**
    ```bash
