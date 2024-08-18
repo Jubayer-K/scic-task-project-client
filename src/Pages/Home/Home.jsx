@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../Shared/Card";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -33,9 +34,15 @@ const Home = () => {
       <h1 className="text-center md:text-3xl text-xl my-3">Start Shopping</h1>
 
       <div className="grid lg:grid-cols-4 gap-5 md:grid-cols-3">
-      {products.slice(0, 8).map((product) => (
-        <Card key={product.id} product={product} />
-      ))}
+        {products.slice(0, 4).map((product) => (
+          <Card key={product.id} product={product} />
+        ))}
+      </div>
+
+      <div className="text-center  my-4">
+        <Link to={'/all-products'}>
+          <button className="btn btn-link btn-outline">Explore More </button>
+        </Link>
       </div>
     </>
   );
