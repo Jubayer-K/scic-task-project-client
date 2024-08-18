@@ -12,11 +12,12 @@ const AllProducts = () => {
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
+  const [sortBy, setSortBy] = useState("dateNewestFirst");
 
   useEffect(() => {
     fetchProducts();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, brand, category, priceRange]);
+  }, [currentPage, brand, category, priceRange, sortBy]);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -32,6 +33,7 @@ const AllProducts = () => {
             category,
             priceMin: priceRange.min,
             priceMax: priceRange.max,
+            sortBy,
           },
         }
       );
@@ -67,8 +69,8 @@ const AllProducts = () => {
 
   return (
     <>
-      <h1 className="text-center font-nunito font-medium text-5xl">All Products</h1>
-      <div className="my-5 md:w-1/3 mx-auto">
+      <h1 className="text-center font-nunito font-medium text-3xl md:text-5xl my-5">All Products</h1>
+      <div className="my-5 mx-auto max-w-lg">
         <div className="input input-bordered flex items-center gap-2">
           <input
             type="text"
@@ -95,8 +97,8 @@ const AllProducts = () => {
       </div>
 
       {/* Filter Options */}
-      <div className="flex gap-4 justify-center my-5">
-        <select value={brand} onChange={(e) => setBrand(e.target.value)} className="select select-bordered">
+      <div className="flex flex-col md:flex-row gap-4 justify-center my-5 px-4">
+        <select value={brand} onChange={(e) => setBrand(e.target.value)} className="select select-bordered w-full md:w-auto">
           <option value="">All Brands</option>
           <option value="TechBrand">TechBrand</option>
           <option value="HomeTech">HomeTech</option>
@@ -104,10 +106,10 @@ const AllProducts = () => {
           <option value="AudioTech">AudioTech</option>
           <option value="EcoBrand">EcoBrand</option>
           <option value="FashionBrand">FashionBrand</option>
-          {/* Add more brands as needed */}
+          <option value="BeautyTech">BeautyTech</option>
         </select>
 
-        <select value={category} onChange={(e) => setCategory(e.target.value)} className="select select-bordered">
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="select select-bordered w-full md:w-auto">
           <option value="">All Categories</option>
           <option value="electronics">Electronics</option>
           <option value="fitness">Fitness</option>
@@ -115,31 +117,44 @@ const AllProducts = () => {
           <option value="accessories">Accessories</option>
         </select>
 
-        <div className="flex gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <input
             type="number"
             placeholder="Min Price"
-            className="input input-bordered"
+            className="input input-bordered w-full md:w-auto"
             value={priceRange.min}
             onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
           />
           <input
             type="number"
             placeholder="Max Price"
-            className="input input-bordered"
+            className="input input-bordered w-full md:w-auto"
             value={priceRange.max}
             onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
           />
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-4 gap-5 md:grid-cols-3">
+      {/* Sorting Options */}
+      <div className="flex justify-center my-5 px-4">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="select select-bordered w-full md:w-auto"
+        >
+          <option value="dateNewestFirst">Date: Newest First</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div className="grid gap-5 px-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product) => (
-          <Card key={product.id} product={product}></Card>
+          <Card key={product.id} product={product} />
         ))}
       </div>
       <h2 className="my-4 text-center">Total Products: {products.length}</h2>
-      <div className="flex justify-center my-5">
+      <div className="flex justify-center my-5 px-4">
         <div className="join">
           <button
             className="join-item btn"
