@@ -9,10 +9,14 @@ const AllProducts = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
+  const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
   useEffect(() => {
     fetchProducts();
-  }, [currentPage]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, brand, category, priceRange]);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -24,6 +28,10 @@ const AllProducts = () => {
             page: currentPage,
             limit: 8,
             search: searchTerm,
+            brand,
+            category,
+            priceMin: priceRange.min,
+            priceMax: priceRange.max,
           },
         }
       );
@@ -85,6 +93,46 @@ const AllProducts = () => {
           </button>
         </div>
       </div>
+
+      {/* Filter Options */}
+      <div className="flex gap-4 justify-center my-5">
+        <select value={brand} onChange={(e) => setBrand(e.target.value)} className="select select-bordered">
+          <option value="">All Brands</option>
+          <option value="TechBrand">TechBrand</option>
+          <option value="HomeTech">HomeTech</option>
+          <option value="FitTech">FitTech</option>
+          <option value="AudioTech">AudioTech</option>
+          <option value="EcoBrand">EcoBrand</option>
+          <option value="FashionBrand">FashionBrand</option>
+          {/* Add more brands as needed */}
+        </select>
+
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="select select-bordered">
+          <option value="">All Categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="fitness">Fitness</option>
+          <option value="beauty">Beauty</option>
+          <option value="accessories">Accessories</option>
+        </select>
+
+        <div className="flex gap-2">
+          <input
+            type="number"
+            placeholder="Min Price"
+            className="input input-bordered"
+            value={priceRange.min}
+            onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+          />
+          <input
+            type="number"
+            placeholder="Max Price"
+            className="input input-bordered"
+            value={priceRange.max}
+            onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
+          />
+        </div>
+      </div>
+
       <div className="grid lg:grid-cols-4 gap-5 md:grid-cols-3">
         {products.map((product) => (
           <Card key={product.id} product={product}></Card>
