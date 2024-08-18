@@ -4,16 +4,15 @@ import { AuthContext } from "../Providers/AuthProviders";
 import { toast } from "react-toastify";
 
 const NavBar = () => {
-
-    const { user, logOut } = useContext(AuthContext);
-    const logOutToast = () => toast("User Logged out Successfully");
-    const handleLogOut = () => {
-      logOut()
-        .then(() => {
-          logOutToast();
-        })
-        .catch();
-    };
+  const { user, logOut } = useContext(AuthContext);
+  const logOutToast = () => toast("User Logged out Successfully");
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        logOutToast();
+      })
+      .catch();
+  };
 
   const navLinks = (
     <>
@@ -52,10 +51,13 @@ const NavBar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to={'/'}>
-          <button className="btn btn-ghost text-3xl font-bold text-nowrap">
-            Khan Shop
-          </button>
+        <Link to={"/"}>
+          <div className=" btn btn-ghost flex item-center" >
+            <img className="h-10" src="/favicon.png" alt="" />
+            <button className="text-3xl font-bold text-nowrap">
+              Khan <span className="text-gray-500">Shop</span>
+            </button>
+          </div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
